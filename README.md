@@ -1,1 +1,2 @@
-# Binar_Car_Rental_BCA_SYNRGY
+# BINAR CAR RENTAL
+
