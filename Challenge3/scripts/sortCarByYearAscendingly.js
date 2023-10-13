@@ -2,7 +2,7 @@ function sortCarByYearAscendingly(cars) {
   // Clone array untuk menghindari side-effect
   const result = [...cars];
 
-  // Implementasi algoritma pengurutan Bubble Sort secara langsung
+  // algoritma Bubble Sort
   const n = result.length;
   let swapped;
 
@@ -14,7 +14,7 @@ function sortCarByYearAscendingly(cars) {
 
     for (let i = 0; i < n - 1; i++) {
       if (result[i].year > result[i + 1].year) {
-        // Tukar posisi mobil
+        // Tukar posisi
         const temp = result[i];
         result[i] = result[i + 1];
         result[i + 1] = temp;
@@ -22,7 +22,7 @@ function sortCarByYearAscendingly(cars) {
       }
     }
 
-    // Jika tidak ada pertukaran posisi, maka array sudah terurut
+    // tidak ada pertukaran posisi, maka array urut
     if (!swapped) {
       isSorted = true;
     }
