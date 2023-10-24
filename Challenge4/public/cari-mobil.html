@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Navbar Starts -->
+    <header class="header-main">
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid mt-3 ms-lg-5 me-lg-5 ">
+                <a class="navbar-brand ms-lg-4" href="https://imgbb.com/">
+                    <img src="https://i.ibb.co/k5Xg78b/logo.png" alt="logo" class="img-fluid">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">BCR</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 gap-3">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Our Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Why Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Testimonial</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-success">Register</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Navbar Ends -->
+
+    <!-- Section 1 Starts -->
+    <div class="section-1 container-fluid ms-lg-3 me-lg-5 pt-lg-5">
+        <div class="row ms-lg-5">
+            <div class="col-lg-6 col-md-12 col-sm-12 mt-1">
+                <div class="row">
+                    <div class="col-xs-12 mt-3">
+                        <h1>Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 col-xs-12 mt-3">
+                        <p>
+                            Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga
+                            terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 mt-3 mb-5">
+                        <div class="button-start">
+                            <button type="button" class="btn btn-success">Mulai Sewa Mobil</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-md-12  d-flex justify-content-md-center pe-0">
+                <a href="https://ibb.co/QbzRZXB">
+                    <img src="https://i.ibb.co/GxBLXFw/img-car.png" alt="img-car" class="car-image img-fluid">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Section 1 Ends -->
+
+    <!-- Cari Mobil -->
+    <section id="cari-mobil" class="mb-5">
+        <div class="container car-filter">
+            <div class="row justify-content-center">
+                <div class="col-lg px-4">
+                    <form class="row" id="form_filter_submit">
+                        <div class="col-lg">
+                            <label class="form-label car-filter-label" for="Tipe Driver">Tipe Driver</label>
+                            <select class="form-select" id="tipe_driver" aria-label="Default select example">
+                                <option selected>Pilih Tipe Driver</option>
+                                <option value="1">Dengan Sopir</option>
+                                <option value="2">Tanpa Sopir (Lepas Kunci)</option>
+                            </select>
+                        </div>
+                        <div class="col-lg">
+                            <label class="form-label car-filter-label" for="Tipe Driver">Tanggal</label>
+                            <input class="form-control" id="tanggal_booking" type="date" placeholder="Pilih Tanggal">
+                        </div>
+                        <div class="col-lg">
+                            <label class="form-label car-filter-label" for="Tipe Driver">Waktu Jemput/Ambil</label>
+                            <select class="form-select" id="waktu_booking" aria-label="Default select example">
+                                <option selected>Pilih Waktu</option>
+                                <option value="08:00:00">08.00 WIB</option>
+                                <option value="09:00:00">09.00 WIB</option>
+                                <option value="10:00:00">10.00 WIB</option>
+                                <option value="11:00:00">11.00 WIB</option>
+                                <option value="12:00:00">12.00 WIB</option>
+                            </select>
+                        </div>
+                        <div class="col-lg">
+                            <label class="form-label car-filter-label" for="Tipe Driver">Jumlah Penumpang
+                                (optional)</label>
+                            <input class="form-control" id="total_penumpang" type="number"
+                                placeholder="Jumlah Penumpang">
+                        </div>
+                        <div class="button-start col-lg-2 align-self-center px-4 mt-4">
+                            <button class="btn btn-success" id="btn-filter" type="submit">Cari Mobil</button>
+                        </div>
+                    </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hasil Filter -->
+        <div class="container" style="margin-left: auto; margin-right: auto;">
+            <div class="mt-5 justify-content-center">
+                <div id="cars-container" class="row row-cols-3 g-3">
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Section 9 Starts -->
+    <div class="footer container-fluid">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-10 offset-md-2">
+                            <p>
+                                Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10 offset-md-2">
+                            <p>
+                                binarcarrental@gmail.com
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10 offset-md-2 mb-2">
+                            <p>
+                                081-233-334-808
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <h5>
+                                Our services
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <h5>
+                                Why Us
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <h5>
+                                Testimonial
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <h5>
+                                FAQ
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <div class="row">
+                        <div class="col-12 mb-1">
+                            <p>Connect with us</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1 me-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#0D28A6" />
+                                <path
+                                    d="M15 1.66663H12.5C11.395 1.66663 10.3352 2.10561 9.55376 2.88701C8.77236 3.66842 8.33337 4.72822 8.33337 5.83329V8.33329H5.83337V11.6666H8.33337V18.3333H11.6667V11.6666H14.1667L15 8.33329H11.6667V5.83329C11.6667 5.61228 11.7545 5.40032 11.9108 5.24404C12.0671 5.08776 12.279 4.99996 12.5 4.99996H15V1.66663Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                    transform="translate(5, 5)" />
+                            </svg>
+
+                        </div>
+                        <div class="col-1 me-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#0D28A6" />
+                                <path
+                                    d="M14.1666 1.66663H5.83329C3.53211 1.66663 1.66663 3.53211 1.66663 5.83329V14.1666C1.66663 16.4678 3.53211 18.3333 5.83329 18.3333H14.1666C16.4678 18.3333 18.3333 16.4678 18.3333 14.1666V5.83329C18.3333 3.53211 16.4678 1.66663 14.1666 1.66663Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                    transform="translate(6, 6)" />
+                                <path
+                                    d="M13.3334 9.47501C13.4362 10.1685 13.3178 10.8769 12.9948 11.4992C12.6719 12.1215 12.161 12.6262 11.5347 12.9414C10.9085 13.2566 10.1987 13.3663 9.50653 13.2549C8.81431 13.1436 8.17484 12.8167 7.67907 12.321C7.1833 11.8252 6.85648 11.1857 6.7451 10.4935C6.63371 9.8013 6.74343 9.09159 7.05865 8.46532C7.37386 7.83905 7.87853 7.32812 8.50086 7.00521C9.12319 6.68229 9.8315 6.56383 10.525 6.66667C11.2325 6.77158 11.8874 7.10123 12.3931 7.60693C12.8988 8.11263 13.2285 8.76757 13.3334 9.47501Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                    transform="translate(6, 6)" />
+                                <path d="M14.5834 5.41663H14.5917" stroke="white" stroke-linecap="round"
+                                    stroke-linejoin="round" transform="translate(6, 6)" />
+                            </svg>
+                        </div>
+                        <div class="col-1 me-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#0D28A6" />
+                                <path
+                                    d="M19.1667 2.49996C18.3687 3.06285 17.4851 3.49338 16.55 3.77496C16.0482 3.19788 15.3812 2.78887 14.6392 2.60323C13.8973 2.41759 13.1163 2.46429 12.4018 2.737C11.6873 3.00972 11.0737 3.49529 10.6442 4.12805C10.2146 4.76082 9.98979 5.51024 10 6.27496V7.10829C8.53557 7.14626 7.08444 6.82147 5.77588 6.16283C4.46733 5.50419 3.34197 4.53215 2.50004 3.33329C2.50004 3.33329 -0.833292 10.8333 6.66671 14.1666C4.95048 15.3316 2.906 15.9157 0.833374 15.8333C8.33337 20 17.5 15.8333 17.5 6.24996C17.4993 6.01783 17.477 5.78629 17.4334 5.55829C18.2839 4.71953 18.8841 3.66055 19.1667 2.49996V2.49996Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                    transform="translate(6, 6)" />
+                            </svg>
+                        </div>
+                        <div class="col-1 me-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#0D28A6" />
+                                <path
+                                    d="M3.33329 3.33337H16.6666C17.5833 3.33337 18.3333 4.08337 18.3333 5.00004V15C18.3333 15.9167 17.5833 16.6667 16.6666 16.6667H3.33329C2.41663 16.6667 1.66663 15.9167 1.66663 15V5.00004C1.66663 4.08337 2.41663 3.33337 3.33329 3.33337Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                    transform="translate(6, 6)" />
+                                <path d="M18.3333 5L9.99996 10.8333L1.66663 5" stroke="white" stroke-linecap="round"
+                                    stroke-linejoin="round" transform="translate(6, 6)" />
+                            </svg>
+                        </div>
+                        <div class="col-1 me-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <circle cx="16" cy="16" r="16" fill="#0D28A6" />
+                                <path
+                                    d="M13.3333 9.16663V5.83329M17.5 1.66663H2.5V15H6.66667V18.3333L10 15H14.1667L17.5 11.6666V1.66663ZM9.16667 9.16663V5.83329V9.16663Z"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round"
+                                    transform="translate(6, 6)" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>
+                                Copyright Binar 2022
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <a class="navbar-brand" href="https://imgbb.com/">
+                                <img src="https://i.ibb.co/k5Xg78b/logo.png" alt="logo" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Section 9 Ends -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+</body>
+
+</html>
