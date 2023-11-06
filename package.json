@@ -1,0 +1,11 @@
+{
+  "name": "challenge_5",
+  "version": "1.0.0",
+  "description": "Challenge 5 Synrgy Bca",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Naufal Arya Raihasa",
+  "license": "ISC"
+}
