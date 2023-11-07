@@ -25,7 +25,7 @@ export const config: { [key: string]: Knex.Config } = {
       tableName: "knex_migrations"
     },
     seeds: { 
-      directory: '../data/seeds' 
+      directory: '../docs/seeds' 
     },
     ...knexSnakeCaseMappers,
   }

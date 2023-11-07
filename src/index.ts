@@ -15,12 +15,12 @@
 // });
 
 import { Request, Response, NextFunction } from 'express';
-import dbSetup from './config/db-setup';
+import dbSetup from '../config/db-setup';
 import express from 'express';
-import User from './src/models/user';
+import User from './models/user';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: '../.env' })
 dbSetup();
 
 const PORT = process.env.PORT;
