@@ -24,45 +24,62 @@
 //   ]);
 // };
 
+// import { Knex } from "knex";
+
+// export async function seed(knex: Knex): Promise<void> {
+//   // Deletes all existing entries in the "cars" table
+//   await knex("cars").del();
+
+//   // Insert 5 sample records into the "cars" table
+//   await knex("cars").insert([
+//     {
+//       name: "Car 1",
+//       price: 20000,
+//       size: "Compact",
+//       image: "car1.jpg",
+//     },
+//     {
+//       name: "Car 2",
+//       price: 25000,
+//       size: "Sedan",
+//       image: "car2.jpg",
+//     },
+//     {
+//       name: "Car 3",
+//       price: 30000,
+//       size: "SUV",
+//       image: "car3.jpg",
+//     },
+//     {
+//       name: "Car 4",
+//       price: 35000,
+//       size: "Truck",
+//       image: "car4.jpg",
+//     },
+//     {
+//       name: "Car 5",
+//       price: 40000,
+//       size: "Convertible",
+//       image: "car5.jpg",
+//     },
+//   ]);
+// }
+
+
 import { Knex } from "knex";
+import * as fs from "fs";
+import * as path from "path";
 
 export async function seed(knex: Knex): Promise<void> {
   // Deletes all existing entries in the "cars" table
   await knex("cars").del();
 
-  // Insert 5 sample records into the "cars" table
-  await knex("cars").insert([
-    {
-      name: "Car 1",
-      price: 20000,
-      size: "Compact",
-      image: "car1.jpg",
-    },
-    {
-      name: "Car 2",
-      price: 25000,
-      size: "Sedan",
-      image: "car2.jpg",
-    },
-    {
-      name: "Car 3",
-      price: 30000,
-      size: "SUV",
-      image: "car3.jpg",
-    },
-    {
-      name: "Car 4",
-      price: 35000,
-      size: "Truck",
-      image: "car4.jpg",
-    },
-    {
-      name: "Car 5",
-      price: 40000,
-      size: "Convertible",
-      image: "car5.jpg",
-    },
-  ]);
+  // Specify the full path to the JSON file by navigating up two levels
+  const jsonFilePath = path.join(__dirname, "../../data/cars.json");
+
+  // Read data from the JSON file
+  const data = JSON.parse(fs.readFileSync(jsonFilePath, "utf8"));
+
+  // Insert the records into the "cars" table
+  await knex("cars").insert(data);
 }
-
-
