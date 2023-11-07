@@ -24,20 +24,45 @@
 //   ]);
 // };
 
-import { Knex } from 'knex';
-import * as fs from 'fs';
-import * as path from 'path';
+import { Knex } from "knex";
 
 export async function seed(knex: Knex): Promise<void> {
-  // Define the path to the JSON file one folder up
-  const jsonFilePath = path.resolve(__dirname, '../json', 'cars.min.json');
+  // Deletes all existing entries in the "cars" table
+  await knex("cars").del();
 
-  // Read the JSON data from the file
-  const jsonData = fs.readFileSync(jsonFilePath, 'utf-8');
-  const carsData = JSON.parse(jsonData);
-
-  // Insert the data into the 'cars' table
-  await knex('cars').insert(carsData);
+  // Insert 5 sample records into the "cars" table
+  await knex("cars").insert([
+    {
+      name: "Car 1",
+      price: 20000,
+      size: "Compact",
+      image: "car1.jpg",
+    },
+    {
+      name: "Car 2",
+      price: 25000,
+      size: "Sedan",
+      image: "car2.jpg",
+    },
+    {
+      name: "Car 3",
+      price: 30000,
+      size: "SUV",
+      image: "car3.jpg",
+    },
+    {
+      name: "Car 4",
+      price: 35000,
+      size: "Truck",
+      image: "car4.jpg",
+    },
+    {
+      name: "Car 5",
+      price: 40000,
+      size: "Convertible",
+      image: "car5.jpg",
+    },
+  ]);
 }
 
 

@@ -35,28 +35,17 @@ import { Knex } from "knex";
 
 
 export async function up(knex: Knex): Promise<void> {
-    return knex.schema.createTable("cars", (table) => {
-        table.uuid("id").primary().notNullable();
-        table.string("plate").notNullable();
-        table.string("manufacture").notNullable();
-        table.string("model").notNullable();
-        table.string("image").notNullable();
-        table.integer("rentPerDay").notNullable();
-        table.integer("capacity").notNullable();
-        table.text("description").notNullable();
-        table.timestamp("availableAt").notNullable();
-        table.string("transmission").notNullable();
-        table.boolean("available").notNullable();
-        table.string("type").notNullable();
-        table.integer("year").notNullable();
-        table.jsonb("options");
-        table.jsonb("specs");
-      });
+    await knex.schema.createTable("cars", (table) => {
+        table.increments("id").primary();
+        table.string("name").notNullable();
+        table.decimal("price").notNullable();
+        table.string("size");
+        table.string("image");
+        table.timestamps(true, true);
+    });
 }
 
-
 export async function down(knex: Knex): Promise<void> {
-    return knex.schema
-    .dropTableIfExists('cars')
+    await knex.schema.dropTable("cars");
 }
 

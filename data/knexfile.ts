@@ -1,14 +1,9 @@
 import type { Knex } from "knex";
 import dotenv from 'dotenv';
 
-dotenv.config();
-// dotenv.config({ path: __dirname+'/.env' });
-// require('dotenv').config({ path: __dirname+'/.env' });
-// require('dotenv').config();
 
-// const database = process.env.DATABASE_NAME;
-// const password = process.env.PASSWORD;
-// const username = process.env.USERNAME;
+dotenv.config({ path: '../.env' })
+
 
 const { knexSnakeCaseMappers } = require('objection');
 
@@ -18,9 +13,9 @@ export const config: { [key: string]: Knex.Config } = {
   development: {
     client: "postgresql",
     connection: {
-      database: "test_db",
-      user: "postgres",
-      password: "Kusuma3107",
+      database: process.env.DATABASE_NAME,
+      user: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
     },
     pool: {
       min: 2,
