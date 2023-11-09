@@ -13,7 +13,6 @@ export const getCars = async (req: Request, res: Response) => {
   }
 };
 
-
 export const createCar = async (req: Request, res: Response) => {
   try {
       const { name, price, size } = req.body as Car;
@@ -45,4 +44,68 @@ export const createCar = async (req: Request, res: Response) => {
       console.error(error);
       res.status(500).json({ message: 'Terjadi kesalahan saat menambahkan mobil.' });
   }
+};
+
+export const updateCar = async (req: Request, res: Response) => {
+    try {
+      const carId = req.params.id;
+      const { name, price, size } = req.body as Car;
+      const imageFile = req.file;
+  
+      // If an image is provided, process and update it
+      if (imageFile) {
+        const fileBase64 = imageFile.buffer.toString('base64');
+        const result = await cloudinary.uploader.upload(`data:${imageFile.mimetype};base64,${fileBase64}`);
+        const updatedImage = result.secure_url;
+  
+        // Update the car information including the new image
+        const updatedCar = await Car.query().findById(carId).patch({
+          name,
+          price,
+          size,
+          image: updatedImage,
+        });
+  
+        if (updatedCar) {
+          res.json({ message: 'Car updated successfully.' });
+        } else {
+          res.status(404).json({ message: 'Car not found.' });
+        }
+      } else {
+        // If no image is provided, update other fields only
+        const updatedCar = await Car.query().findById(carId).patch({
+          name,
+          price,
+          size,
+        });
+  
+        if (updatedCar) {
+          res.json({ message: 'Car updated successfully.' });
+        } else {
+          res.status(404).json({ message: 'Car not found.' });
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error updating car.' });
+    }
+};
+  
+  
+  
+export const deleteCar = async (req: Request, res: Response) => {
+    try {
+      const carId = req.params.id;
+  
+      const deletedCar = await Car.query().deleteById(carId);
+  
+      if (deletedCar) {
+        res.json({ message: 'Car deleted successfully.' });
+      } else {
+        res.status(404).json({ message: 'Car not found.' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error deleting car.' });
+    }
 };
