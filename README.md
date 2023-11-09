@@ -1,8 +1,42 @@
-# Binar Car Rental
+# CHALLENGE 5 | Car Management API
 
-Projek ini adalah adalah bagian dari serangkaian penugasan dari SYNRGY Academy BCA.
+## Routes
 
+### 1. Get All Cars
 
-Chapter 1 -> Challange1 
+- **Endpoint:** `/cars`
+- **Method:** `GET`
+- **Description:** Retrieves information about all cars.
+- **Output:** Array of car objects.
 
-Chapter 2 -> Challange2
+### 2. Create a New Car
+
+- **Endpoint:** `/cars/create`
+- **Method:** `POST`
+- **Description:** Creates a new car entry.
+- **Input:** Form data including an image file.
+- **Output:** Details of the newly created car.
+
+### 3. Update a Car
+
+- **Endpoint:** `/cars/:id`
+- **Method:** `PUT`
+- **Description:** Updates information for a specific car identified by its ID.
+- **Input:** Form data including an image file.
+- **Output:** Updated details of the car.
+
+### 4. Delete a Car
+
+- **Endpoint:** `/cars/:id`
+- **Method:** `DELETE`
+- **Description:** Deletes a specific car entry identified by its ID.
+- **Output:** Confirmation message.
+
+## Note:
+
+- Image files are expected to be uploaded using the `image` field in the form data.
+- Ensure proper authentication and authorization mechanisms are implemented for these routes.
+
+---
+
+Feel free to customize it according to your project's specific details!
