@@ -1,5 +1,9 @@
 # CHALLENGE 5 | Car Management API
 
+## Database
+![carsDb](https://github.com/naufalraihasa/Binar_Car_Rental_BCA_SYNRGY/assets/112618165/a3db7465-f7f5-47eb-8af2-2df3e59e34cf)
+
+
 ## Routes
 
 ### 1. Get All Cars
