@@ -96,7 +96,7 @@
     "price": "70000",
     "size": "SUV",
     "image": "https://res.cloudinary.com/dv0vbw2ji/image/upload/v1699576082/owok8opkqhhhdabhzzgi.jpg",
-      "id": 8
+    "id": 8
 }
 
 ```
