@@ -14,7 +14,8 @@
   Retrieves information about all cars.
 
 - **Output:**
-  {
+```json
+{
   "cars": [
     {
       "id": 1,
@@ -62,7 +63,7 @@
       "updated_at": "2023-11-08T16:44:31.307Z"
     }
   ]
-}
+}```
 
 - **Thunder Client:**
 ![selectCars](https://github.com/naufalraihasa/Binar_Car_Rental_BCA_SYNRGY/assets/112618165/5e18620e-45e1-496e-8e6d-a5123801aeaf)
@@ -83,13 +84,15 @@
   Form data including an image file.
 
 - **Output:**
-    {
-        "name": "Pajero Sport",
-        "price": "70000",
-        "size": "SUV",
-        "image": "https://res.cloudinary.com/dv0vbw2ji/image/upload/v1699576082/owok8opkqhhhdabhzzgi.jpg",
-          "id": 8
-    }
+```
+json
+{
+    "name": "Pajero Sport",
+    "price": "70000",
+    "size": "SUV",
+    "image": "https://res.cloudinary.com/dv0vbw2ji/image/upload/v1699576082/owok8opkqhhhdabhzzgi.jpg",
+      "id": 8
+}```
 
 - **Thunder Client:**
 ![createCars](https://github.com/naufalraihasa/Binar_Car_Rental_BCA_SYNRGY/assets/112618165/9bbb6fa5-dc7f-47a2-be47-ca23be2d7586)
@@ -117,9 +120,12 @@
   Form data including an image file.
 
 - **Output:** 
-  {
-    "message": "Car updated successfully."
-  }
+
+```
+json
+{
+  "message": "Car updated successfully."
+}```
 
 - **Thunder Client:**
 ![updateCars](https://github.com/naufalraihasa/Binar_Car_Rental_BCA_SYNRGY/assets/112618165/9cca1786-7628-4157-8c76-a3b21d57895b)
@@ -144,9 +150,11 @@
   Deletes a specific car entry identified by its ID.
 
 - **Output:** 
-  {
-    "message": "Car deleted successfully."
-  }
+```
+json
+{
+  "message": "Car deleted successfully."
+}```
 
 - **Thunder Client:**
 ![deleteCars](https://github.com/naufalraihasa/Binar_Car_Rental_BCA_SYNRGY/assets/112618165/54bcb19e-d88e-415b-87f0-3ce4e91c388c)
