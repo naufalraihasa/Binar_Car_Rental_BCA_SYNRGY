@@ -1,5 +1,5 @@
 import express from 'express';
-import { getCars, createCar, updateCar, deleteCar } from '../handlers/carHandlers'; // Import the updateCar controller function
+import { getCars, createCar, updateCar, deleteCar } from '../controllers/carController'; // Import the updateCar controller function
 import upload from '../middlewares/upload';
 
 const router = express.Router();
@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/cars', getCars);
 
 // Create a new car
-router.post('/cars/create', upload.single('image'), createCar);
+router.post('/cars', upload.single('image'), createCar);
 
 // Update a car
 router.put('/cars/:id', upload.single('image'), updateCar);

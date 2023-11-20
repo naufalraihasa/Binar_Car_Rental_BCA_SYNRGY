@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
-import Car from '../models/carModels'; // Import your CarModel
+import CarService from '../service/carServices';
+import Car from '../database/models/carModels';
 import {v2 as cloudinary} from 'cloudinary';
 
 export const getCars = async (req: Request, res: Response) => {
   try {
-      const cars = await Car.query();
+      const cars = await CarService.findAll();
       res.json({ cars });
 
   } catch (error) {
@@ -29,12 +30,20 @@ export const createCar = async (req: Request, res: Response) => {
           const image = result.secure_url;
 
           // Save the car information and the Cloudinary image URL to the database
-          const newCar = await Car.query().insert({
-              name,
-              price,
-              size,
-              image, // Save the Cloudinary image URL in the database
-          });
+          // const newCar = await Car.query().insert({
+          //     name,
+          //     price,
+          //     size,
+          //     image, // Save the Cloudinary image URL in the database
+          // });
+          const newCarData = {
+            name,
+            price,
+            size,
+            image, // Assuming 'image' is derived from Cloudinary or any other source
+          };
+          
+          const newCar = await CarService.create(newCarData as Car);
 
           res.status(201).json(newCar);
       } else {
@@ -48,7 +57,8 @@ export const createCar = async (req: Request, res: Response) => {
 
 export const updateCar = async (req: Request, res: Response) => {
     try {
-      const carId = req.params.id;
+      // const carId = req.params.id;
+      const carId = parseInt(req.params.id, 10);
       const { name, price, size } = req.body as Car;
       const imageFile = req.file;
   
@@ -65,6 +75,21 @@ export const updateCar = async (req: Request, res: Response) => {
           size,
           image: updatedImage,
         });
+
+        // const updatedCar = await CarService.update(carId, {
+        //   name,
+        //   price,
+        //   size,
+        //   image: updatedImage,
+        // });
+        // const updatedCar = {
+        //   name,
+        //   price,
+        //   size,
+        //   image: updatedImage, // Assuming 'image' is derived from Cloudinary or any other source
+        // };
+        
+        // const newCar = await CarService.create(updatedCar as Car);
   
         if (updatedCar) {
           res.json({ message: 'Car updated successfully.' });
@@ -95,9 +120,10 @@ export const updateCar = async (req: Request, res: Response) => {
   
 export const deleteCar = async (req: Request, res: Response) => {
     try {
-      const carId = req.params.id;
+      const carId = parseInt(req.params.id, 10);
   
-      const deletedCar = await Car.query().deleteById(carId);
+      // const deletedCar = await Car.query().deleteById(carId);
+      const deletedCar = await CarService.delete(carId);
   
       if (deletedCar) {
         res.json({ message: 'Car deleted successfully.' });

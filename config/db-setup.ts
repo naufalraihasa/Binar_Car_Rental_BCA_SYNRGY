@@ -4,7 +4,7 @@ import knex from 'knex';
 import { Model } from 'objection';
 import { Knex } from 'knex'; // Import Knex types
 
-const knexfile = require('../docs/knexfile');
+const knexfile = require('../src/database/knexfile');
 
 // Setup knex and objection
 function setupDb(): void {
