@@ -1,7 +1,7 @@
 import { Model, Pojo } from 'objection';
 import Knex from 'knex';
 
-const knexConfig = require('../../docs/knexfile'); // Import your Knex configuration
+const knexConfig = require('..//knexfile'); // Import your Knex configuration
 const knex = Knex(knexConfig.development);
 Model.knex(knex);
 

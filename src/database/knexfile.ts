@@ -2,7 +2,7 @@ import type { Knex } from "knex";
 import dotenv from 'dotenv';
 
 
-dotenv.config({ path: '../.env' })
+dotenv.config({ path: '../../.env' })
 dotenv.config();
 
 
