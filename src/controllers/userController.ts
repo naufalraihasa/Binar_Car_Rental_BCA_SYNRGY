@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-// import { encodeTokenJwt, checkTokenJwt} from '../utils/jsonwebtoken.util';
 import User from '../database/models/userModels'; // Assuming User is the correct exported interface/model from your models file
+import UserService from '../service/userServices'; // Update the path accordingly
 import { encodeTokenJwt, checkTokenJwt } from '../utils/jwt';
 
 const saltRounds = 12;
@@ -13,7 +13,7 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
     let user: User = {} as User;
 
     if (role === 'SUPERADMIN' || role === 'ADMIN') {
-      user = await User.query().insert({
+      user = await UserService.createUser({
         email,
         password: hashPassword,
         role: 'ADMIN',
@@ -21,7 +21,7 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
     }
 
     if (role === 'MEMBER') {
-      user = await User.query().insert({
+      user = await UserService.createUser({
         email,
         password: hashPassword,
         role: 'MEMBER',
@@ -44,66 +44,63 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
 };
 
 const loginUser = async (req: Request, res: Response): Promise<void> => {
-    try {
-      const { email, password } = req.body;
-      const userByEmail = await User.query().findOne({ email });
-  
-      if (!userByEmail) {
-        res.status(401).json({ error: 'User account not found' });
-        return;
-      }
-  
-      const checkUserPassword = await bcrypt.compare(password, userByEmail.password);
-  
-      if (!checkUserPassword) {
-        res.status(401).json({ error: 'Email or password mismatch' });
-        return;
-      }
-  
-      // Use the UserTokenDTO to create a token
-      const tokenGenerated = encodeTokenJwt({
-        id: userByEmail.id,
-        email: userByEmail.email,
-        role: userByEmail.role,
-      });
-  
-      res.status(200).json({ message: 'Logged in successfully', token: tokenGenerated });
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to log in' });
+  try {
+    const { email, password } = req.body;
+    const userByEmail = await UserService.userByEmail(email);
+
+    if (!userByEmail) {
+      res.status(401).json({ error: 'User account not found' });
+      return;
     }
-  };
+
+    const checkUserPassword = await bcrypt.compare(password, userByEmail.password);
+
+    if (!checkUserPassword) {
+      res.status(401).json({ error: 'Email or password mismatch' });
+      return;
+    }
+
+    // Use the UserTokenDTO to create a token
+    const tokenGenerated = encodeTokenJwt({
+      id: userByEmail.id,
+      email: userByEmail.email,
+      role: userByEmail.role,
+    });
+
+    res.status(200).json({ message: 'Logged in successfully', token: tokenGenerated });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to log in' });
+  }
+};
 
 const getProfileUser = async (req: Request, res: Response): Promise<void> => {
-    try {
-      const authHeader = req.headers['authorization'];
-      const token = authHeader && authHeader.split(' ')[1];
-  
-      if (!token) {
-        res.status(401).json({ error: 'Token not provided' });
-        return;
-      }
-  
-      const decodeToken = await checkTokenJwt(token);
-  
-      const userFindById = await User.query().findById(decodeToken.id);
-  
-      if (!userFindById) {
-        res.status(404).json({ error: 'User not found' });
-      } else {
-        res.status(200).json({
-          id: userFindById.id,
-          email: userFindById.email,
-          role: userFindById.role,
-          created_at: userFindById.created_at,
-          updated_at: userFindById.updated_at,
-        });
-      }
-    } catch (err) {
-      res.status(500).json({ error: 'Failed to get user' });
-    }
-  };
-  
-  
-  
+  try {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
 
-export { registerUser, loginUser, getProfileUser };
+    if (!token) {
+      res.status(401).json({ error: 'Token not provided' });
+      return;
+    }
+
+    const decodeToken = await checkTokenJwt(token);
+
+    const userFindById = await UserService.userById(decodeToken.id);
+
+    if (!userFindById) {
+      res.status(404).json({ error: 'User not found' });
+    } else {
+      res.status(200).json({
+        id: userFindById.id,
+        email: userFindById.email,
+        role: userFindById.role,
+        created_at: userFindById.created_at,
+        updated_at: userFindById.updated_at,
+      });
+    }
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to get user' });
+  }
+};
+
+export default { registerUser, loginUser, getProfileUser };
